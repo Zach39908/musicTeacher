@@ -218,6 +218,8 @@ void noteIdentifier::noteMenu() {
     noteIdentMenu.add("Browse List", 'b');
     noteIdentMenu.add("Quit to Main Menu", 'q');
 
+    cout << "'#' = sharps, 'b' = flats, 'x' = double sharps, 'bb' = double flats, '[]' = natural" << endl << endl;
+
     while(input != 'q') {                                                           // Loop until user quits.
         input = noteIdentMenu.displayAndRead();
 

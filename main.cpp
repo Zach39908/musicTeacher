@@ -1,21 +1,16 @@
-#include "noteIdentifier.h"
+#include "chordIdentifier.h"
 
 using namespace std;
 
 int main() {
     char input, input2;
     noteIdentifier *n1, *n2;
+    chordIdentifier *c1, *c2;
     
     try {
         n1 = new noteIdentifier("trebleNotation.txt");
-    }
-    catch(...) {
-        cout << "Terminating ..." << endl;
-        return 0;
-    }
-
-    try {
         n2 = new noteIdentifier("bassNotation.txt");
+        c1 = new chordIdentifier("trebleMajorRoot.txt");
     }
     catch(...) {
         cout << "Terminating ..." << endl;
@@ -65,7 +60,25 @@ int main() {
             break;
 
             case 'c':
-            cout << "Still Developing Chord Identifier..." << endl << endl;
+            while(input2 != 'b' || input2 != 't' || input2 == 'B' || input2 == 'T') {
+                cout << "Bass Clef (b) or Treble Clef (t): "; cin >> input2;
+                if(input2 == 'b' || input2 == 'B') {
+                    cout << endl << "Still Developing Bass Clef..." << endl;
+                    break;
+                }
+                else if(input2 == 't' || input2 == 'T') {
+                    cout << endl;
+                    c1->chordMenu();
+                    break;
+                }
+                else if(input2 == 'q') {
+                    break;
+                }
+                else {
+                    cout << endl << "Unknown Selecion, Try Again." << endl << endl;
+                }
+            }
+            cout << endl;
             break;
 
             case 'q':
