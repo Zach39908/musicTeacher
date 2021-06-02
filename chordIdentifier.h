@@ -10,5 +10,5 @@ class chordIdentifier : public noteIdentifier {
     public:
 
     chordIdentifier(string);
-    void chordMenu();
+    void chordMenu(char);
 };

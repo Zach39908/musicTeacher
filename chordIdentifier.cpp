@@ -4,25 +4,36 @@ using namespace std;
 
 chordIdentifier::chordIdentifier(string file) : noteIdentifier(file) {}
 
-void chordIdentifier::chordMenu() {
+void chordIdentifier::chordMenu(char select) {
     char input;                                                 
     string userNote;
 
     Menu chordIdentMenu("CHORD IDENTIFIER MENU");                                     // Creating menu and options for Chord Identifier.
-    chordIdentMenu.add("Identify a Major Chord", 'M');
-    chordIdentMenu.add("Identify a minor chord", 'm');
-    chordIdentMenu.add("Display all available chords", 'd');
-    chordIdentMenu.add("Browse List of Major Chords", 'B');
-    chordIdentMenu.add("Browse List of minor chords", 'b');
-    chordIdentMenu.add("Quit to Main Menu", 'q');
 
-    cout << "'#' = sharps, 'b' = flats, 'x' = double sharps, 'bb' = double flats, '[]' = natural" << endl << endl;
+    if(select == 'M') {
+        chordIdentMenu.add("Identify a Major Chord", 'i');
+        chordIdentMenu.add("Display all Major Chords", 'd');
+        chordIdentMenu.add("Browse List of Major Chords", 'b');
+        chordIdentMenu.add("Quit to Main Menu", 'q');
+    }
+    else if(select == 'm') {
+        chordIdentMenu.add("Identify a minor chord", 'i');
+        chordIdentMenu.add("Display all minor chords", 'd');
+        chordIdentMenu.add("Browse List of minor chords", 'b');
+        chordIdentMenu.add("Quit to Main Menu", 'q');
+    }
+    else {
+        cout << endl << "Incorrect user selection..." << endl;
+        return;
+    }
+
+    cout << "'#' = sharps, 'b' = flats, 'x' = double sharps, 'bb' = double flats, '[]' = natural" << endl;
 
     while(input != 'q') {                                                           // Loop until user quits.
         input = chordIdentMenu.displayAndRead();
 
         switch(input) {
-            case 'M':                                                                                       // If user enters 'M' they enter a Major Chord and it's charted out as a triad.
+            case 'i':                                                                                       // If user enters 'M' they enter a Major Chord and it's charted out as a triad.
             cout << "Enter a note for it's major chord: "; cin >> userNote;
             cout << endl;
             if(userNote == "C" || userNote == "B#" || userNote == "c" || userNote == "b#") {                // C and B# are the same note.
@@ -82,17 +93,8 @@ void chordIdentifier::chordMenu() {
             cout << endl;
             break;
 
-            case 'm':
-            cout << "Still Developing Minor Chords..." << endl;
-            break;
-
             case 'd':
             (*this).displayList();
-            cout << endl;
-            break;
-
-            case 'B':
-            browseList();
             break;
 
             case 'b':

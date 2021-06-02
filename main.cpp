@@ -3,29 +3,29 @@
 using namespace std;
 
 int main() {
-    char input, input2;
+    char input, input2, input3;
     noteIdentifier *n1, *n2;
-    chordIdentifier *c1, *c2;
+    chordIdentifier *c1, *c2, *c3, *c4;
     
     try {
         n1 = new noteIdentifier("trebleNotation.txt");
         n2 = new noteIdentifier("bassNotation.txt");
-        c1 = new chordIdentifier("trebleMajorRoot.txt");
+        c1 = new chordIdentifier("trebleMajor.txt");
     }
     catch(...) {
         cout << "Terminating ..." << endl;
         return 0;
     }
 
-    cout << endl << "----------------" << endl << "SONG CREATOR V.1" << endl << "----------------" << endl << endl;
+    cout << endl << "-----------------" << endl << "MUSIC TEACHER V.1" << endl << "-----------------" << endl << endl;
 
-    std::cout << std::endl;
-    std::cout << "    /|    /|     /|\n";
-    std::cout << "   / |   / |    / |\n";
-    std::cout << "  |  |  |  |   |  |\n";
-    std::cout << "  | ()  | ()   | ()\n";
-    std::cout << " ()    ()     ()   \n";
-    std::cout << std::endl;
+    cout << std::endl;
+    cout << "    /|    /|     /|\n";
+    cout << "   / |   / |    / |\n";
+    cout << "  |  |  |  |   |  |\n";
+    cout << "  | ()  | ()   | ()\n";
+    cout << " ()    ()     ()   \n";
+    cout << endl;
 
     Menu mainMenu("MAIN MENU");
     mainMenu.add("Note Identifier", 'n');
@@ -62,13 +62,28 @@ int main() {
             case 'c':
             while(input2 != 'b' || input2 != 't' || input2 == 'B' || input2 == 'T') {
                 cout << "Bass Clef (b) or Treble Clef (t): "; cin >> input2;
+
                 if(input2 == 'b' || input2 == 'B') {
                     cout << endl << "Still Developing Bass Clef..." << endl;
                     break;
                 }
                 else if(input2 == 't' || input2 == 'T') {
-                    cout << endl;
-                    c1->chordMenu();
+                    while(input3 != 'M' || input3 != 'm') {
+                        cout << endl << "Major (M) or minor (m) Chords: "; cin >> input3;
+
+                        if(input3 == 'M') {
+                            cout << endl;
+                            c1->chordMenu(input3);
+                            break;
+                        }
+                        else if(input3 == 'm') {
+                            cout << endl << "Still Developing minor chords..." << endl;
+                            break;
+                        }
+                        else if(input3 == 'q') {
+                            break;
+                        }
+                    }
                     break;
                 }
                 else if(input2 == 'q') {
