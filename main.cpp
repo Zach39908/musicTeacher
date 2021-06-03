@@ -5,12 +5,13 @@ using namespace std;
 int main() {
     char input, input2, input3;
     noteIdentifier *n1, *n2;
-    chordIdentifier *c1, *c2, *c3, *c4;
+    chordIdentifier *c1, *c2;
     
     try {
         n1 = new noteIdentifier("trebleNotation.txt");
         n2 = new noteIdentifier("bassNotation.txt");
         c1 = new chordIdentifier("trebleMajor.txt");
+        c2 = new chordIdentifier("bassMajor.txt");
     }
     catch(...) {
         cout << "Terminating ..." << endl;
@@ -64,7 +65,22 @@ int main() {
                 cout << "Bass Clef (b) or Treble Clef (t): "; cin >> input2;
 
                 if(input2 == 'b' || input2 == 'B') {
-                    cout << endl << "Still Developing Bass Clef..." << endl;
+                     while(input3 != 'M' || input3 != 'm') {
+                        cout << endl << "Major (M) or minor (m) Chords: "; cin >> input3;
+
+                        if(input3 == 'M') {
+                            cout << endl;
+                            c2->chordMenu(input3);
+                            break;
+                        }
+                        else if(input3 == 'm') {
+                            cout << endl << "Still Developing minor chords..." << endl;
+                            break;
+                        }
+                        else if(input3 == 'q') {
+                            break;
+                        }
+                    }
                     break;
                 }
                 else if(input2 == 't' || input2 == 'T') {

@@ -8,6 +8,7 @@ noteIdentifier::noteIdentifier(string fileName) {
     head = NULL;
     last = NULL;
     firstToDisplay = NULL;
+
     try {
         loadFile(fileName);                                                 // Loads input file and validates / initializes default note list.
     }
@@ -19,6 +20,7 @@ noteIdentifier::noteIdentifier(string fileName) {
 
 Note* noteIdentifier::operator[](int index) {
     Note* current = head;
+
     if(index < 0 || index >= noteListSize) {  
         cout << "Error: Invalid Index" << endl; 
         return NULL;
@@ -227,6 +229,7 @@ void noteIdentifier::noteMenu() {
             case 'i':                                                                                       // If user enters 'i' they enter a note and it's charted out.
             cout << "Enter a note: "; cin >> userNote;
             cout << endl;
+            
             if(userNote == "C" || userNote == "B#" || userNote == "c" || userNote == "b#") {                // C and B# are the same note.
                 displayNote((*this)[0]);
             }
@@ -285,7 +288,7 @@ void noteIdentifier::noteMenu() {
             break;
 
             case 'd':
-            (*this).displayList();
+            displayList();
             cout << endl;
             break;
 
