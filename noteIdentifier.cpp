@@ -131,7 +131,7 @@ void noteIdentifier::browseList() {
     Menu browseMenu("BROWSE LIST");
     browseMenu.add("Next Note", '>');
     browseMenu.add("Previous Note", '<');
-    browseMenu.add("Quit to Note Identifier", 'q');
+    browseMenu.add("Quit to Identifier Menu", 'q');
 
     goToFirst();
 

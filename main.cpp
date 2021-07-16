@@ -5,13 +5,14 @@ using namespace std;
 int main() {
     char input, input2, input3;
     noteIdentifier *n1, *n2;
-    chordIdentifier *c1, *c2;
+    chordIdentifier *c1, *c2, *c3;
     
     try {
         n1 = new noteIdentifier("trebleNotation.txt");
         n2 = new noteIdentifier("bassNotation.txt");
         c1 = new chordIdentifier("trebleMajor.txt");
         c2 = new chordIdentifier("bassMajor.txt");
+        c3 = new chordIdentifier("trebleMinor.txt");
     }
     catch(...) {
         cout << "Terminating ..." << endl;
@@ -93,7 +94,8 @@ int main() {
                             break;
                         }
                         else if(input3 == 'm') {
-                            cout << endl << "Still Developing minor chords..." << endl;
+                            cout << endl;
+                            c3->chordMenu(input3);
                             break;
                         }
                         else if(input3 == 'q') {

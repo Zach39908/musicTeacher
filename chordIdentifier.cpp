@@ -33,8 +33,15 @@ void chordIdentifier::chordMenu(char select) {
         input = chordIdentMenu.displayAndRead();
 
         switch(input) {
-            case 'i':                                                                                       // If user enters 'M' they enter a Major Chord and it's charted out as a triad.
-            cout << "Enter a note for it's major chord: "; cin >> userNote;
+            case 'i': 
+            if(select == 'M') {
+                cout << "Enter a note for it's major chord: ";                                             // If user enters 'M' they enter a Major Chord and it's charted out as a triad.
+            }
+            else if(select == 'm') {
+                cout << "Enter a note for it's minor chord: ";                                             // If user enters 'm' they enter a minor chord and it's charted out as a triad.
+            }                                                                                      
+            
+            cin >> userNote;
             cout << endl;
             
             if(userNote == "C" || userNote == "B#" || userNote == "c" || userNote == "b#") {                // C and B# are the same note.
